@@ -1,0 +1,61 @@
+/**
+ *  $1 API method
+ */
+class ${1:APIMethodName} extends AbstractRestExposedFunction
+{
+  /**
+   * Factory method for actions to create an instance.
+   *
+   * @param sfAction $action Instance of the action this gets called from
+   */
+  public static function getInstance(sfAction $action)
+  {
+    return new $1($action);
+  }
+
+  /**
+   * Configure the API method
+   *
+   * Override default values and set method specific properties as well as
+   * define API method paramters.
+   */
+  protected function configure()
+  {
+    $this->addParameters(array(
+        new RestParameter(
+		  'id',
+		  RestParameter::PARAMETER_OPTIONAL,
+		  RestParameter::TYPE_NUMERIC,
+		  'The record id.')
+    ));
+
+    $this->description = '${2:A GOOD description}';
+    $this->route = '${3}';
+    $this->method = self::METHOD_$4;
+    $this->formats = array(self::FORMAT_JSON);
+    $this->defaultOffset = 0;
+    $this->defaultRowCount = 500;
+    $this->hideDoc = false;
+    $this->cacheEnabled = false;
+    $this->cacheLifeTime = 60;
+    $this->examples = $this->getExamples();
+  }
+
+  /**
+   * Main entry point of the class
+   *
+   * All work happens here and the return type MUST be an associative array.
+   *
+   * @return array An associative array (even if there is no result)
+   */
+  protected function doExecute()
+  {
+    // Code here
+  }
+
+  protected function getExamples()
+  {
+    return null;
+  }
+}
+
