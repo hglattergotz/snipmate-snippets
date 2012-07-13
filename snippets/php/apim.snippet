@@ -23,10 +23,10 @@ class ${1:APIMethodName} extends AbstractRestExposedFunction
   {
     $this->addParameters(array(
         new RestParameter(
-		  'id',
-		  RestParameter::PARAMETER_OPTIONAL,
-		  RestParameter::TYPE_NUMERIC,
-		  'The record id.')
+			'id',
+			RestParameter::PARAMETER_OPTIONAL,
+			RestParameter::TYPE_NUMERIC,
+			'The record id.')
     ));
 
     $this->description = '${2:A GOOD description}';
@@ -38,7 +38,7 @@ class ${1:APIMethodName} extends AbstractRestExposedFunction
     $this->hideDoc = false;
     $this->cacheEnabled = false;
     $this->cacheLifeTime = 60;
-    $this->examples = $this->getExamples();
+    $this->addExamples($this->getExamples());
   }
 
   /**
