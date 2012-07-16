@@ -22,16 +22,16 @@ class ${1:APIMethodName} extends AbstractRestExposedFunction
   protected function configure()
   {
     $this->addParameters(array(
-        new RestParameter(
-			'id',
-			RestParameter::PARAMETER_OPTIONAL,
-			RestParameter::TYPE_NUMERIC,
-			'The record id.')
+      new RestParameter(
+        'id',
+        RestParameter::PARAMETER_OPTIONAL,
+        RestParameter::TYPE_NUMERIC,
+        'The record id.')
     ));
 
-    $this->description = '${2:A GOOD description}';
-    $this->route = '${3}';
-    $this->method = self::METHOD_$4;
+    $this->description = $this->getAPIDesc();
+    $this->route = '${2}';
+    $this->method = self::METHOD_;
     $this->formats = array(self::FORMAT_JSON);
     $this->defaultOffset = 0;
     $this->defaultRowCount = 500;
@@ -53,9 +53,22 @@ class ${1:APIMethodName} extends AbstractRestExposedFunction
     // Code here
   }
 
+  /**
+   * Helper to return the API method description. Using this style of creating
+   * a string is simpler to edit than having it inline in the code.
+   *
+   * @return string API method description
+   */
+  protected function getAPIDesc()
+  {
+    return <<<EOF
+API Description
+EOF;
+  }
+
   protected function getExamples()
   {
-    return null;
+    return array();
   }
 }
 
