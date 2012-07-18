@@ -3,14 +3,36 @@
  */
 class ${1:APIMethodName} extends AbstractRestExposedFunction
 {
+  protected $model;
+
+  /**
+   * __construct
+   *
+   * Constructor that gets the action and optionally the model class injected
+   *
+   * @param sfAction $action An instance of the sfAction if there is one
+   * @param object $model    An instance of the model class to be used for db
+   *                         queries
+   * @access public
+   * @return void
+   */
+  public function __construct($action = null, $model = null)
+  {
+    parent::__construct($action);
+    $this->model = $model;
+  }
+
   /**
    * Factory method for actions to create an instance.
    *
    * @param sfAction $action Instance of the action this gets called from
+   * @return $1
    */
   public static function getInstance(sfAction $action)
   {
-    return new $1($action);
+    $model = new ${2}();
+
+    return new $1($action, $model);
   }
 
   /**
@@ -30,8 +52,8 @@ class ${1:APIMethodName} extends AbstractRestExposedFunction
     ));
 
     $this->description = $this->getAPIDesc();
-    $this->route = '${2}';
-    $this->method = self::METHOD_;
+    $this->route = '${3}';
+    $this->method = self::METHOD_${4};
     $this->formats = array(self::FORMAT_JSON);
     $this->defaultOffset = 0;
     $this->defaultRowCount = 500;
@@ -66,9 +88,22 @@ API Description
 EOF;
   }
 
+  /**
+   * Helper that builds the examples and returns an array of RestExample
+   * instances
+   */
   protected function getExamples()
   {
     return array();
+  }
+
+  /**
+   * Helper to make it simpler to write properly formatted JSON
+   */
+  protected function getEx1()
+  {
+    return <<<EOF
+EOF;
   }
 }
 
