@@ -1,7 +1,14 @@
-class ${1:ClassName}
+<?php
+
+namespace ${1:`substitute(substitute(expand("%:h"), 'v^w+/(u)', '1', ''), '/', '\', 'g')`};
+
+/**
+ *
+ * @author Henning Glatter-Götz <henning@glatter-gotz.com>
+ */
+class ${2:`Filename('', 'myClass')`}
 {
-	public function ${2:__construct}(${3:$argument})
+    public function __construct()
 	{
-		${4:// code...}
 	}
 }
