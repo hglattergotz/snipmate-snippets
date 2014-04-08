@@ -1,14 +1,16 @@
 <?php
 
-namespace ${1:`substitute(substitute(expand("%:h"), 'v^w+/(u)', '1', ''), '/', '\', 'g')`};
+namespace `substitute(substitute(expand("%:p:h"), '.*/src/', '', ''), '/', '\', 'g')`;
 
 /**
+ * `Filename('', 'ClassName')`
  *
  * @author Henning Glatter-Götz <henning@glatter-gotz.com>
  */
-class ${2:`Filename('', 'myClass')`}
+class `Filename('', 'ClassName')`
 {
     public function __construct()
 	{
+		${1:// code}
 	}
 }
